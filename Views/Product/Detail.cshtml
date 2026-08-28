@@ -1,0 +1,36 @@
+﻿@model BTVN3.Models.Product
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<div class="container mt-4">
+    <h2>Chi tiết sản phẩm</h2>
+    <div class="row mt-4">
+        <!-- Cột ảnh sản phẩm -->
+        <div class="col-md-5">
+            <img src="~/images/@Model.image" class="img-fluid border" alt="@Model.productName" />
+        </div>
+
+        <!-- Cột thông tin chi tiết -->
+        <div class="col-md-7">
+            <h3>Sản phẩm: @Model.productName</h3>
+            <p class="fs-5 mt-3">
+                Giá gốc: <del>@Model.oldPrice</del> Giá mới: <strong class="text-dark">@Model.price</strong>
+            </p>
+
+            <h5 class="mt-4">Mô Tả:</h5>
+            <p class="text-muted">@Model.description</p>
+
+            <p class="fs-5 fw-bold">
+                Trạng thái:
+                <span class="fw-normal">@(Model.quantity > 0 ? "Còn hàng" : "Hết hàng")</span>
+            </p>
+
+            <p class="fs-6">
+                Ngày đăng: @Model.createdDate
+            </p>
+
+            <a href="@Url.Action("GetAllProduct", "Product")" class="btn btn-danger mt-3">Về danh sách</a>
+        </div>
+    </div>
+</div>
